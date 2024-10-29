@@ -1,5 +1,5 @@
 import classes from './Footer.module.css'
-import logoMarvel from "../../assets/logoMarvel2.svg"
+import logoMarvel from "../../assets/Logos/logoMarvel2.svg"
 function Footer(){
     let CURRENT_YEAR: number=new Date().getFullYear();
     return(

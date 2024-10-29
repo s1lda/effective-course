@@ -1,10 +1,10 @@
 import IComics from "../interface/IComics";
-import comic_iron_spider from "../assets/comic_iron_spider.jpeg";
-import comic_captain from "../assets/comic_captain.jpg"
-import comic_secret from "../assets/secret_attack.jpeg"
-import comic_new_avengers from "../assets/comic_new_avengers.jpeg"
-import comuc_strange_toback from "../assets/comic_strange_toback.jpeg"
-import comic_deadpool_venom from "../assets/comic_deadpool_venom.jpeg"
+import comic_iron_spider from "../assets/comicimages/comic_iron_spider.jpeg";
+import comic_captain from "../assets/comicimages/comic_captain.jpg"
+import comic_secret from "../assets/comicimages/secret_attack.jpeg"
+import comic_new_avengers from "../assets/comicimages/comic_new_avengers.jpeg"
+import comuc_strange_toback from "../assets/comicimages/comic_strange_toback.jpeg"
+import comic_deadpool_venom from "../assets/comicimages/comic_deadpool_venom.jpeg"
 const comicsData: IComics[] = [
     { id:"10", name: 'Железный Человек и Человек-Паук.', description: 'Во время обычной прогулки с девушкой Человек-Паук встретится с таинственным Глушителем - злодейкой, которая умеет читать мысли и знает самый главный секрет Питера Паркера. Чем же закончится эта встреча? Железного Человека похищают учёные из Центра Инновационных Идей, чтобы использовать его знания для разработки опасного оружия. Как же гениальный Тони Старк справится с этой ситуацией и чем ему придётся пожертвовать? Человек-Паук и Железный Человек вместе противостоят неожиданному противнику - Радиоактивному человеку, а также отправляются в далёкое будущее, чтобы вызволить других Мстителей из плена могущественного злодея по имени Канг Завоеватель. Смогут ли супергерои спасти своих друзей из ловушки или сами в неё попадут?', image: comic_iron_spider,characters: ["0", "3"] },
     { id:"11",name: 'Классика Marvel. Капитан Америка', description: 'Капитан Америка — герой, который к началу эпохи MARVEL, подарившей нам Человека-паука, Мстителей и Фантастическую Четвёрку, уже успел прогреметь, полюбиться миллионам читателей, стать символом борьбы с нацистами, а потом кануть в небытие. Однако, когда в 60-е Стэн Ли и Джек Кирби вдохнули в супергероику новую жизнь, к читателям вернулся и Стив Роджерс. В одних сюжетах герой из прошлого напоминал злодеям настоящего что такое правосудие, а в других рассказывал подробности боевой молодости! Перед вами лучший комикс-боевик, созданный легендарными авторами — Стэном Ли и Джеком Кирби! Взгляните своими глазами, как они, находясь на пике творческой формы, заново создали Капитана Америка!', image: comic_captain,characters:["1", "5"]},

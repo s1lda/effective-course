@@ -1,12 +1,12 @@
-import iron_man from '../assets/iron_man.jpg';
-import captain_america from '../assets/captain.jpeg'
-import hulk from '../assets/hulk.jpeg'
-import spider from '../assets/spider.jpg'
-import doctor from '../assets/doctor.jpg'
-import thor from '../assets/thor.jpg'
-import ant_man from '../assets/ant_man.jpg'
-import venom from '../assets/venom.jpeg'
-import deadpool from '../assets/deadpool.jpg'
+import iron_man from '../assets/characterimages/iron_man.jpg';
+import captain_america from '../assets/characterimages/captain.jpeg'
+import hulk from '../assets/characterimages/hulk.jpeg'
+import spider from '../assets/characterimages/spider.jpg'
+import doctor from '../assets/characterimages/doctor.jpg'
+import thor from '../assets/characterimages/thor.jpg'
+import ant_man from '../assets/characterimages/ant_man.jpg'
+import venom from '../assets/characterimages/venom.jpeg'
+import deadpool from '../assets/characterimages/deadpool.jpg'
 import ICharacter from '../interface/ICharacter';
 
 const charactersData: ICharacter[] = [

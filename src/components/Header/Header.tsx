@@ -1,6 +1,6 @@
 import classes from './Header.module.css';
 import { NavLink } from 'react-router-dom';
-import logoMarvel from '../../assets/logoMarvel.png'
+import logoMarvel from '../../assets/Logos/logoMarvel.png'
 function Header() {
     return (
         <header className={classes.header}>
