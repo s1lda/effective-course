@@ -18,7 +18,7 @@ const CharacterDetail = () => {
             <img className={classes.characterImage} src={character.image} alt={character.name} />
             </div>
             <p className={classes.characterDescription}>{character.description}</p>
-            <h2>Комиксы</h2>
+            <h2 className={classes.comicListName}>Комиксы</h2>
             <ul className={classes.comicList}>
                 {character.comics.map(comicId => {
                     const comic = comicsData.find(c => c.id === comicId);

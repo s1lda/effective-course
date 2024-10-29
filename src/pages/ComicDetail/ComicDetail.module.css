@@ -35,7 +35,9 @@
     transform: scale(1.02);
 }
 
-
+.characterListName{
+    font-family: var(--main-font);
+}
 .comicDescription {
     font-size: 1.2rem;
     line-height: 1.6;
