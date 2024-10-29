@@ -18,7 +18,11 @@
     border-bottom: 2px solid red; 
     padding-bottom: 10px; 
 }
-
+.imageWrapper {
+    display: flex;
+    justify-content: center; 
+    margin: 20px 0; 
+}
 .comicImage {
     max-width: 100%;
     height: auto;

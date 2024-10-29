@@ -14,7 +14,9 @@ const CharacterDetail = () => {
     return (
         <div className={classes.characterDetail}>
             <h1 className={classes.characterName}>{character.name}</h1>
+            <div className={classes.imageWrapper}>
             <img className={classes.characterImage} src={character.image} alt={character.name} />
+            </div>
             <p className={classes.characterDescription}>{character.description}</p>
             <h2>Комиксы</h2>
             <ul className={classes.comicList}>
