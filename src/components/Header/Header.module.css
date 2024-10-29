@@ -32,12 +32,13 @@
     text-decoration: none; 
     padding: 10px 20px; 
     border-radius: 30px; 
-    transition: background-color 0.3s, color 0.3s; 
+    transition: border-color 0.3s; 
+    border: 2px solid transparent; 
 }
 
 .menu:hover {
-    cursor: pointer; 
-    background-color: rgba(255, 255, 255, 0.2); 
+    cursor: pointer;
+    border-color: white;
 }
 
 .active {
