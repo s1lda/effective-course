@@ -1,8 +1,12 @@
-interface ICharacter {
+interface ICharacters {
     id: string;
     name: string;
     description: string;
     image: string;
-    comics:string[];
+    comics:IComic[];
 }
-export default ICharacter;
+interface IComic {
+    id: string;
+    title: string;
+}
+export default ICharacters;

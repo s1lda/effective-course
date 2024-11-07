@@ -3,6 +3,10 @@ interface IComics {
     name: string;
     description: string;
     image: string;
-    characters:string[];
+    characters:ICharacter[];
+}
+interface ICharacter{
+    id:string;
+    name:string;
 }
 export default IComics;
