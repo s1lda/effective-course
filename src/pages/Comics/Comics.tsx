@@ -4,6 +4,7 @@ import classes from './Comics.module.css';
 import ItemCard from '../../components/ItemCard/ItemCard';
 import ComicsStore from '../../stores/ComicsStore';
 import Pagination from '../../components/Pagination/Pagination';
+import SearchBar from '../../components/SearchBar/SearchBar';
 const Comics = observer(() => {
     useEffect(() => {
         ComicsStore.fetchComics(0); 
@@ -18,16 +19,13 @@ const Comics = observer(() => {
                 <div className={classes.title}>
                     <p>Comics ({ComicsStore.totalItems})</p>
                 </div>
-                <div className={classes.search_container}>
-                    <input
-                        type="text"
-                        placeholder="Введите название комикса..."
-                        className={classes.search_input}
-                        value={ComicsStore.searchTerm}
-                        onChange={(e) => ComicsStore.setSearchTerm(e.target.value)} 
-                    />
-                    <button  className={classes.search_button} onClick={() => ComicsStore.triggerSearch()}>Search</button>
-                </div>
+                <SearchBar
+                    searchTerm={ComicsStore.searchTerm}
+                    placeholder="Введите название комикса..."
+                    onSearchTermChange={(e) => ComicsStore.setSearchTerm(e.target.value)} 
+                    onSearch={() => ComicsStore.triggerSearch()}
+                    buttonText="Search"
+                />
                 <div className={classes.characters_items}>
                     {ComicsStore.loading ? (
                         <p className={classes.loading}>Загрузка...</p>

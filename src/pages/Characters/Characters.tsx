@@ -4,6 +4,7 @@ import classes from './Characters.module.css';
 import ItemCard from '../../components/ItemCard/ItemCard';
 import CharactersStore from '../../stores/CharactersStore';
 import Pagination from '../../components/Pagination/Pagination';
+import SearchBar from '../../components/SearchBar/SearchBar';
 const Characters = observer(() => {
     useEffect(() => {
         CharactersStore.fetchCharacters(0);
@@ -20,16 +21,13 @@ const Characters = observer(() => {
                 <div className={classes.title}>
                     <p>Characters ({CharactersStore.totalItems})</p>
                 </div>
-                <div className={classes.search_container}>
-                    <input
-                        type="text"
-                        placeholder="Введите имя персонажа..."
-                        className={classes.search_input}
-                        value={CharactersStore.searchTerm}
-                        onChange={(e) => CharactersStore.setSearchTerm(e.target.value)}
-                    />
-                    <button className={classes.search_button} onClick={() => CharactersStore.triggerSearch()}>Search</button>
-                </div>
+                <SearchBar
+                    searchTerm={CharactersStore.searchTerm}
+                    placeholder="Введите имя персонажа..."
+                    onSearchTermChange={(e) => CharactersStore.setSearchTerm(e.target.value)}
+                    onSearch={() => CharactersStore.triggerSearch()}
+                    buttonText="Search"
+                />
 
                 <div className={classes.characters_items}>
                     {CharactersStore.loading ? (
