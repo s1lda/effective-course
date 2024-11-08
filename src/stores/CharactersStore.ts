@@ -24,6 +24,7 @@ class CharactersStore {
     setSearchTerm(term: string) {
         this.searchTerm = term;
         this.pendingSearch = true; 
+        this.offset = 0;
         this.debouncedFetchCharacters();
     }
 
@@ -62,6 +63,7 @@ class CharactersStore {
     }
 
     triggerSearch() {
+        this.offset = 0;
         this.fetchCharacters();
     }
 

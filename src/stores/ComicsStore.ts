@@ -22,6 +22,7 @@ class ComicsStore {
     setSearchTerm(term: string) {
         this.searchTerm = term;
         this.pendingSearch = true; 
+        this.offset=0;
         this.debouncedFetchComics();
     }
 
@@ -57,6 +58,7 @@ class ComicsStore {
         }
     }
     triggerSearch() {
+        this.offset=0;
         this.fetchComics();
     }
     get filteredComics() {
