@@ -6,6 +6,7 @@ import { BrowserRouter, Navigate } from "react-router-dom";
 import { useRoutes } from "react-router-dom";
 import CharacterDetail from './pages/CharacterDetail/CharacterDetail';
 import ComicDetail from './pages/ComicDetail/ComicDetail';
+import Favourites from './pages/Favourites/Favourites';
 function AppRoutes() {
   const routes = [
     {
@@ -17,6 +18,7 @@ function AppRoutes() {
         { path: "comics", element: <Comics /> },
         { path: "characters/:id", element: <CharacterDetail /> },
         { path: "comics/:id", element: <ComicDetail /> },
+        { path: "favourites", element: <Favourites /> },
       ],
     },
   ];

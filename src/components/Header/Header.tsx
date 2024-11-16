@@ -19,6 +19,12 @@ function Header() {
                     >
                         <span>Comics</span>
                     </NavLink>
+                    <NavLink 
+                        to="/favourites" 
+                        className={({ isActive }) => `${classes.menu} ${isActive ? classes.active : ''}`}
+                    >
+                        <span>Favourites</span>
+                    </NavLink>
                 </div>
             </div>
         </header>

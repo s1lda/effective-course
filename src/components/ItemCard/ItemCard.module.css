@@ -52,6 +52,28 @@
     -webkit-line-clamp: 2; 
     -webkit-box-orient: vertical; 
 }
+.heartIcon {
+    font-size: 24px;
+    color: #fff;
+    border: 2px solid #f00;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    visibility: hidden;
+}
+
+.item:hover .heartIcon {
+    visibility: visible;
+}
+
+.heartIcon.filled {
+    background-color: #f00;
+    color: #fff;
+}
 
 @media (max-width: 1200px) {
     .item {
