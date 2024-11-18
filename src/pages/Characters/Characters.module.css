@@ -47,12 +47,12 @@
 
 @media (max-width: 768px) {
     .characters_items > * {
-        flex: 0 1 calc(50% - 20px);
+        flex: 0 1 calc(50% - 100px);
     }
 }
 
 @media (max-width: 480px) {
     .characters_items > * {
-        flex: 0 1 100%;
+        flex: 0 1 50%;
     }
 }
