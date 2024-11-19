@@ -33,7 +33,7 @@ const Favourites = () => {
                             />
                         ))
                     ) : (
-                        <p>Избранные элементы не найдены</p>
+                        <p className={classes.no_items}>Избранные элементы не найдены</p>
                     )}
                 </div>
             </div>

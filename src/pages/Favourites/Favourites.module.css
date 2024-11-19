@@ -32,6 +32,14 @@
     box-sizing: border-box;
     min-width: 280px;
 }
+.no_items {
+    font-size: 30px;
+    color: #888;
+    text-align: center;
+    margin-top: 50px;
+    font-family: var(--main-font);
+    font-weight: bold;
+}
 
 @media (max-width: 768px) {
     .items > * {
