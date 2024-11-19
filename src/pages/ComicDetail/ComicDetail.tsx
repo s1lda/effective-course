@@ -15,7 +15,7 @@ const ComicDetail = observer(() => {
 
   const { comic, loading, error } = comicIdStore;
 
-  if (loading) return <div>Загрузка...</div>;
+  if (loading) return <div className={classes.loading}>Загрузка...</div>;
   if (error) return <div>{error}</div>;
   if (!comic) return <div>Комикс не найден</div>;
 

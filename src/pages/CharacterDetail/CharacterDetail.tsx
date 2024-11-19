@@ -15,7 +15,7 @@ const CharacterDetail = observer(() => {
 
   const { character, loading, error } = characterIdStore;
 
-  if (loading) return <div>Загрузка...</div>;
+  if (loading) return <div className={classes.loading}>Загрузка...</div>;
   if (error) return <div>{error}</div>;
   if (!character) return <div>Персонаж не найден</div>;
 
