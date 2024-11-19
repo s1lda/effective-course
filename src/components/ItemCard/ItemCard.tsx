@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import classes from './ItemCard.module.css';
-import IItemCard from "../../interface/IItemCard";
 import { NavLink } from "react-router-dom";
+import IItemCard from "../../interface/IItemCard";
+import classes from './ItemCard.module.css';
 
 interface IItemCardProps extends IItemCard {
     onRemoveFromFavorites?: (id: string) => void; 

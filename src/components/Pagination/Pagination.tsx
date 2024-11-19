@@ -1,6 +1,6 @@
 import React from 'react';
-import classes from './Pagination.module.css';
 import PaginationProps from '../../interface/PaginationProps';
+import classes from './Pagination.module.css';
 const Pagination: React.FC<PaginationProps> = ({ offset, limit, totalItems, onPageChange }) => {
     const totalPages = Math.ceil(totalItems / limit);
     const currentPage = Math.floor(offset / limit) + 1;

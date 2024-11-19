@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx';
+import debounce from 'debounce';
 import comicsApi from '../api/comicsapi';
 import IItemCard from '../interface/IItemCard';
-import debounce from 'debounce';
 class ComicsStore {
     comics: IItemCard[] = [];       
     loading: boolean = false;      

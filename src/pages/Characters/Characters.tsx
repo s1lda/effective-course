@@ -1,10 +1,11 @@
 import { observer } from 'mobx-react-lite';
 import { useEffect } from 'react';
-import classes from './Characters.module.css';
 import ItemCard from '../../components/ItemCard/ItemCard';
 import CharactersStore from '../../stores/CharactersStore';
 import Pagination from '../../components/Pagination/Pagination';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import classes from './Characters.module.css';
+
 const Characters = observer(() => {
     useEffect(() => {
         CharactersStore.fetchCharacters(0);

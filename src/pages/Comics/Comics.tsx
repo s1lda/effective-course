@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import classes from './Comics.module.css';
 import ItemCard from '../../components/ItemCard/ItemCard';
 import ComicsStore from '../../stores/ComicsStore';
 import Pagination from '../../components/Pagination/Pagination';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import classes from './Comics.module.css';
+
 const Comics = observer(() => {
     useEffect(() => {
         ComicsStore.fetchComics(0); 

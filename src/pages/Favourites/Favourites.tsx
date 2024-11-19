@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import classes from './Favourites.module.css';
 import ItemCard from '../../components/ItemCard/ItemCard';
 import IItemCard from '../../interface/IItemCard';
+import classes from './Favourites.module.css';
 
 const Favourites = () => {
     const [favouriteItems, setFavouriteItems] = useState<IItemCard[]>([]);
