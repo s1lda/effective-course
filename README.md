@@ -1,50 +1,56 @@
-# React + TypeScript + Vite
+# Marvel Comics App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Описание проекта
 
-Currently, two official plugins are available:
+Marvel Comics App — это веб-приложение для просмотра комиксов и персонажей из вселенной Marvel. Пользователи могут искать комиксы и персонажей, добавлять их в избранное, а также управлять избранными элементами. Приложение построено на базе React с использованием TypeScript и управляется через состояние с MobX. Для работы с API данных используются асинхронные запросы.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Используемые технологии
 
-## Expanding the ESLint configuration
+- **React** — библиотека для создания пользовательских интерфейсов.
+- **TypeScript** — язык, расширяющий возможности JavaScript за счёт статической типизации.
+- **MobX** — библиотека для управления состоянием приложения.
+- **Axios**: Для выполнения HTTP-запросов к API.
+- **React Router** — для маршрутизации между страницами приложения.
+- **React Toastify** — для отображения уведомлений.
+- **CSS Modules** — для создания стилизованных компонентов с изолированными стилями.
+- **localStorage** — для сохранения избранных элементов на клиенте.
+- **Vite**: Быстрый инструмент для сборки приложения.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Рекомендуемые версии
 
-- Configure the top-level `parserOptions` property like this:
+- **Node.js**: 20.17.0
+- **npm**: 10.8.2
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Структура проекта
+
+```bash
+📁 marvel-comics-app/
+├── 📁 src/                  # Исходные файлы приложения
+│   ├── 📁 api/              # Работа с Api
+│   ├── 📁 assets/           # Статические ресурсы 
+│   ├── 📁 components/       # Компоненты приложения
+│   ├── 📁 config/           # Передача ключей для работы с Api
+│   ├── 📁 pages/            # Страницы приложения
+│   ├── 📁 constans/         # Мок объекты для героев и комиксов
+│   ├── 📁 stores/           # Состояние приложения, управляемое MobX
+│   ├── 📁 interface/        # TypeScript интерфейсы
+│   ├── App.tsx               # Главный файл приложения
+│   ├── App.css               # Стили для всего приложения
+│   ├── Layout.tsx            # Единый каркас страниц, который отображается на каждой странице приложения
+│   └── main.tsx           # Точка входа в приложение
+├── .gitignore              # Файлы и папки, игнорируемые Git
+├── .env                    # Ключи для работы с Api
+├── package.json            # Зависимости проекта и команды
+├── README.md               # Описание проекта
+├── ... # Другие файлы и директории
+
+## Как запустить frontend часть?
+
+* Установите все зависимости
+```commandline
+npm install 
 ```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+* Запустите скрипт следующей командой:
+```commandline
+npm run dev
 ```
