@@ -15,7 +15,7 @@ const Comics = observer(() => {
         ComicsStore.setOffset(newOffset);
     };
     return (
-        <section className={classes.characters}>
+        <section className={classes.comics}>
             <div className={classes.container}>
                 <div className={classes.title}>
                     <p>Comics ({ComicsStore.totalItems})</p>
@@ -27,7 +27,7 @@ const Comics = observer(() => {
                     onSearch={() => ComicsStore.triggerSearch()}
                     buttonText="Search"
                 />
-                <div className={classes.characters_items}>
+                <div className={classes.comics_items}>
                     {ComicsStore.loading ? (
                         <p className={classes.loading}>Загрузка...</p>
                     ) : ComicsStore.filteredComics.length > 0 ? (

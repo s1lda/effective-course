@@ -35,23 +35,25 @@ const ItemCard: React.FC<IItemCardProps> = ({ id, name, description, image, type
     };
 
     return (
-        <NavLink to={`/${type}/${id}`} className={classes.item} style={{ textDecoration: 'none' }}>
-            <div className={classes.image}>
-                <img src={image} alt={name} />
-            </div>
-            <div className={classes.name}>
-                <p>{name}</p>
-            </div>
-            <div className={classes.info}>
-                <p>{description}</p>
-            </div>
-            <div
-                className={`${classes.heartIcon} ${isFavorite ? classes.filled : ''}`}
-                onClick={toggleFavorite}
-            >
-                ❤
-            </div>
-        </NavLink>
+            <NavLink to={`/${type}/${id}`}  style={{ textDecoration: 'none' }}>
+                <div className={classes.item}>
+                    <div className={classes.image}>
+                        <img src={image} alt={name} />
+                    </div>
+                    <div className={classes.name}>
+                        <p>{name}</p>
+                    </div>
+                    <div className={classes.info}>
+                        <p>{description}</p>
+                    </div>
+                    <div
+                        className={`${classes.heartIcon} ${isFavorite ? classes.filled : ''}`}
+                        onClick={toggleFavorite}
+                    >
+                        ❤
+                    </div>
+                </div>
+            </NavLink>
     );
 };
 

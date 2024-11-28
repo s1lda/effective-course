@@ -4,31 +4,34 @@ import charactersApi from '../api/charactersapi';
 import IItemCard from '../interface/IItemCard';
 
 class CharactersStore {
-    characters: IItemCard[] = [];
+    characters: IItemCard[] = []; 
     loading: boolean = false;
-    error: string | null = null;
-    searchTerm: string = '';
+    error: string | null = null; 
+    searchTerm: string = ''; 
     offset: number = 0;
-    limit: number = 20;
-    totalItems: number = 0;
+    limit: number = 20; 
+    totalItems: number = 0; 
     pendingSearch: boolean = false; 
+    hasMore: boolean = true;
 
     constructor() {
         makeAutoObservable(this);
     }
 
     private debouncedFetchCharacters = debounce(() => {
-        this.fetchCharacters();
+        this.triggerSearch();
     }, 3000);
 
     setSearchTerm(term: string) {
         this.searchTerm = term;
-        this.pendingSearch = true; 
+        this.pendingSearch = true;
         this.offset = 0;
-        this.debouncedFetchCharacters();
+        this.debouncedFetchCharacters(); 
     }
 
     async fetchCharacters(offset: number = this.offset) {
+        if (this.loading || !this.hasMore) return; 
+
         this.loading = true;
         this.error = null;
 
@@ -40,10 +43,17 @@ class CharactersStore {
             );
 
             runInAction(() => {
-                this.characters = items; 
+                this.characters = items;
                 this.totalItems = totalItems;
-                this.loading = false;
                 this.pendingSearch = false; 
+
+                this.hasMore = this.characters.length < this.totalItems;
+
+                if (this.hasMore) {
+                    this.offset = this.characters.length;
+                }
+
+                this.loading = false; 
             });
         } catch (error) {
             runInAction(() => {
@@ -55,30 +65,18 @@ class CharactersStore {
         }
     }
 
-    setOffset(newOffset: number) {
-        if (this.offset !== newOffset) {
-            this.offset = newOffset;
-            this.fetchCharacters(newOffset);
-        }
-    }
-
     triggerSearch() {
-        this.offset = 0;
-        this.fetchCharacters();
+        this.offset=0;
+        this.fetchCharacters(); 
     }
 
     get filteredCharacters() {
         if (this.pendingSearch) {
-            return this.characters;
+            return this.characters; 
         }
-
         return this.characters.filter(character =>
             character.name.toLowerCase().includes(this.searchTerm.toLowerCase())
         );
-    }
-
-    get totalPages() {
-        return Math.ceil(this.totalItems / this.limit);
     }
 }
 

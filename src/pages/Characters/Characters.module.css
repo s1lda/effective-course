@@ -1,6 +1,5 @@
 .characters {
-    padding: 20px;
-    background-color: #f5f5f5;
+    padding:20px;
 }
 
 .container {
@@ -19,41 +18,45 @@
 }
 
 .characters_items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap:20px;
     justify-content: center;
     margin-top: 20px;
-    position: relative; 
-    min-height: 200px;
+    min-height: 400px;
+    width: 100%; 
+    overflow-x: hidden;
+    padding: 20px; 
+    overflow: visible;
+    box-sizing: border-box;
 }
 
 .characters_items > * {
-    flex: 0 1 calc(33.333% - 20px);
     box-sizing: border-box;
-    min-width: 280px;
+    min-width: 300px; 
+    width: 100%;
+
 }
 
 .loading {
-    position: absolute; 
-    text-align: center; 
-    top: 50%; 
+    position: relative;
+    text-align: center;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
     font-size: 24px;
     font-weight: bold;
     color: #333;
 }
 
-
 @media (max-width: 768px) {
-    .characters_items > * {
-        flex: 0 1 calc(50% - 100px);
+    .characters_items {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 480px) {
-    .characters_items > * {
-        flex: 0 1 50%;
+    .characters_items {
+        grid-template-columns: 1fr;
     }
 }
