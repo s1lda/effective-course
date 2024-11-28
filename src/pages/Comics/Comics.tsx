@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect,useCallback } from 'react';
 import { observer } from 'mobx-react-lite';
+import { VirtuosoGrid } from 'react-virtuoso';
 import ItemCard from '../../components/ItemCard/ItemCard';
 import ComicsStore from '../../stores/ComicsStore';
-import Pagination from '../../components/Pagination/Pagination';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import classes from './Comics.module.css';
 
@@ -10,10 +10,13 @@ const Comics = observer(() => {
     useEffect(() => {
         ComicsStore.fetchComics(0); 
     }, []);
-    const handlePageChange = (page: number) => {
-        const newOffset = (page - 1) * ComicsStore.limit;
-        ComicsStore.setOffset(newOffset);
-    };
+    const loadMore = useCallback(() => {
+        if (!ComicsStore.loading && ComicsStore.comics.length < ComicsStore.totalItems) {
+            const newOffset = ComicsStore.comics.length;
+            ComicsStore.fetchComics(newOffset);
+        }
+    }, []);
+
     return (
         <section className={classes.comics}>
             <div className={classes.container}>
@@ -27,22 +30,24 @@ const Comics = observer(() => {
                     onSearch={() => ComicsStore.triggerSearch()}
                     buttonText="Search"
                 />
-                <div className={classes.comics_items}>
-                    {ComicsStore.loading ? (
-                        <p className={classes.loading}>Загрузка...</p>
-                    ) : ComicsStore.filteredComics.length > 0 ? (
-                        ComicsStore.filteredComics.map((comic) => (
-                            <ItemCard key={comic.id} {...comic} type="comics" />
-                        ))
-                    ) : (
-                        <p>Комиксы не найдены</p>
+               
+               <VirtuosoGrid
+                    data={ComicsStore.filteredComics}  
+                    itemContent={(_, comic) => (
+                        <ItemCard key={comic.id} {...comic} type="comics" />
                     )}
-                </div>
-                <Pagination
-                    offset={ComicsStore.offset}
-                    limit={ComicsStore.limit}
-                    totalItems={ComicsStore.totalItems}
-                    onPageChange={handlePageChange}
+                    style={{
+                        height: "100vh",  
+                        width:"100%",
+                    }}
+                    endReached={loadMore}
+                    increaseViewportBy={200}
+                    listClassName={classes.comics_items}
+                    components={{
+                        Footer: observer(() => {
+                            return ComicsStore.loading ? <p className={classes.loading}>Загрузка...</p> : null;
+                        }),
+                    }}
                 />
             </div>
         </section>

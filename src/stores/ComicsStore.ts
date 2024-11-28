@@ -10,7 +10,8 @@ class ComicsStore {
     offset: number = 0;
     limit: number = 20;
     totalItems: number = 0;
-    pendingSearch: boolean = false;      
+    pendingSearch: boolean = false;    
+    hasMore:boolean=true;  
 
     constructor() {
         makeAutoObservable(this);     
@@ -21,12 +22,16 @@ class ComicsStore {
 
     setSearchTerm(term: string) {
         this.searchTerm = term;
-        this.pendingSearch = true; 
-        this.offset=0;
-        this.debouncedFetchComics();
+        if (this.comics.length > 0) {
+            this.pendingSearch = false; 
+        } else {
+            this.pendingSearch = true;
+            this.debouncedFetchComics(); 
+        }
     }
 
     async fetchComics (offset: number = this.offset) {
+        if (this.loading || !this.hasMore) return;
         this.loading = true;            
         this.error = null;              
 
@@ -37,10 +42,16 @@ class ComicsStore {
                 this.searchTerm || undefined
             );  
             runInAction(() => {
-                this.comics = items; 
+                this.comics = offset === 0 ? items : [...this.comics, ...items];; 
                 this.totalItems = totalItems;
-                this.loading = false;  
                 this.pendingSearch = false; 
+                this.hasMore = this.comics.length < this.totalItems;
+
+                if (this.hasMore) {
+                    this.offset = this.comics.length;
+                }
+
+                this.loading = false;
             });
         } catch (error) {
             runInAction(() => {
@@ -51,26 +62,17 @@ class ComicsStore {
             console.error('Ошибка при загрузке данных о комиксах:', error);
         }
     };
-    setOffset(newOffset: number) {
-        if (this.offset !== newOffset) {
-            this.offset = newOffset;
-            this.fetchComics(newOffset);
-        }
-    }
     triggerSearch() {
         this.offset=0;
         this.fetchComics();
     }
     get filteredComics() {
-        if (this.pendingSearch){
-            return this.comics;
+        if (this.searchTerm) {
+            return this.comics.filter((comic) =>
+                comic.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+            );
         }
-        return this.comics.filter(comic =>
-            comic.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-        );
-    }
-    get totalPages(){
-        return Math.ceil(this.totalItems/this.limit)
+        return this.comics;
     }
 }
 
